@@ -10,12 +10,14 @@ public class player : MonoBehaviour
     private string _horizontalaxis ="Horizontal", _verticalaxis="Vertical";
     [SerializeField]
     private Rigidbody2D _rb2d;
-    
+    [SerializeField]
+    private float _speed = 3f;
+
     private Vector2 _input;
 
     private void FixedUpdate()
     {
-        _rb2d.linearVelocity = (_input);
+        _rb2d.linearVelocity = (_input * _speed);
     }
 
     // Update is called once per frame
@@ -24,6 +26,6 @@ public class player : MonoBehaviour
         float horizontalinput= Input.GetAxisRaw(_horizontalaxis);
         float vertcalinput= Input.GetAxisRaw(_verticalaxis);
         _input = new Vector2(horizontalinput, vertcalinput);
+        _input.Normalize();
     }
 }
-

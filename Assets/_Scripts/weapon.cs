@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic; 
 public class weapon: MonoBehaviour
-{
-    [SerializeField]
+{  
+    [SerializeField]    
     private int Rotationspeed=200;
     [SerializeField]
     private Vector3 rotationpoint= Vector3.zero;
@@ -22,7 +22,7 @@ public class weapon: MonoBehaviour
     }
 
     private float calculaterotationammount(float delta)
-    {
+    {   
         return Rotationspeed * delta;
     }
 }
