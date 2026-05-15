@@ -16,7 +16,13 @@ public class weapon: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float rotationamount=  Rotationspeed *Time.deltaTime;
+        float rotationamount=  calculaterotationammount(Time.deltaTime);
             transform.RotateAround(rotationpoint, Vector3.forward,rotationamount);
+            return;
+    }
+
+    private float calculaterotationammount(float delta)
+    {
+        return Rotationspeed * delta;
     }
 }
