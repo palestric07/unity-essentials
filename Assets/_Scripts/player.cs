@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class player : MonoBehaviour
 
@@ -12,6 +13,8 @@ public class player : MonoBehaviour
     private Rigidbody2D _rb2d;
     [SerializeField]
     private float _speed = 3f;
+    [SerializeField]
+    public UnityEvent onPlayerDeath = null;
 
     private Vector2 _input;
 
@@ -28,4 +31,14 @@ public class player : MonoBehaviour
         _input = new Vector2(horizontalinput, vertcalinput);
         _input.Normalize();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+    { 
+            if ( onPlayerDeath != null)
+            {
+                 onPlayerDeath.Invoke();
+            }
+        Destroy(gameObject);
+    }
+}
 }

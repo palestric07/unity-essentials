@@ -7,6 +7,8 @@ public class cloudmanager : MonoBehaviour
     private Transform[] _clouds= new Transform[6];
     [SerializeField]
     private float _speed= 1.0f;
+    [SerializeField]
+    private float _xlimit=12.5f; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +21,10 @@ public class cloudmanager : MonoBehaviour
         for(int i=0; i<_clouds.Length; i++)
         {
             _clouds[i].position +=Vector3.right *_speed* Time.deltaTime;
+            if(_clouds[i].position.x > _xlimit)
+            {
+                _clouds[i].position -= new Vector3 (2 *_xlimit,0,0);
+            }
         }
         
     }
